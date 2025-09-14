@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Rapid7",
+    "position": "SEII",
+    "text": "In my initial role as a Software Engineer I at Rapid7, I contributed to the development of a new suite of APIs for our on-premises vulnerability management application. This experience provided me with valuable insights into designing thoughtful RESTful endpoints for both our customers and internal teams. Additionally, it enabled me to enhance my SQL knowledge, as all queries were manually written. As a Software Engineer II, I have been primarily involved with improving our on premise vulnerability management software, including the upgrade to Java 17 and the migration to Spring Boot. Furthermore, I have worked on cloud applications such as the update server, where I implemented significant improvements in its performance and memory efficiency. These improvements were complemented by the integration of monitoring and alerting capabilities via Grafana, Alloy, and OTEL.  Throughout my time I have mentored and supported junior developers, helping them grow their skills and confidence. I continue to  push for a better development experience including tooling for deployments, swagger API documentation and automatic obfuscation of customer data"
+  },
+  {
+    "title": "cloudsmith",
+    "position": "associate software engineer",
+    "text": "I started in cloudsmith right out of university as a graduate engineer, during that time I was primarily working on our main platform, using Python, Django and DRF to add to our existing API functionality. I have also worked in the frontend of the app, which has been migrating from Jinja templating to React with TS. Along with this I was able to gain experience using AWS services such as ECS, Lambda, IAM, Aurora. I have also had opportunities to work outside of the main platform with our opensource projects, I was able to pick up Go to work on our Terraform provider along with Click for our python CLI."
+  },
+  {
+    "title": "PwC",
+    "position": "intern software engineer",
+    "text": "Year long placement with PwC Belfast. Gaining experience in Python using Django, Django-rest, Flask and data libraries. JavaScript creating webcomponents using Stencil.js, Microservices with Express.js and React."
+  },
+  {
+    "title": "exploristics",
+    "position": "junior software engineer",
+    "text": "Summer Internship, working primarily with AWS CDK in Python. Creating a custom CloudWatch dashboard for tracking costs, usage and errors on the platform."
+  }
+]

@@ -86,49 +86,85 @@
 
         <section id="work" class="experience min-h-[calc(100vh-196px)] transition-all duration-500 pb-24.5 px-7.5 lg:px-12.5 lg:mt-[138px]">
 
-            <div class="wrap">
+            <div
+                class="wrap"
+                x-data="{
+                    items: [],
+                    async init() {
+                        const res = await fetch('./assets/experience.json');
+                        this.items = await res.json();
+                    }
+                }"
+            >
 
-                <div class="mb-12.5 last:mb-0 md:flex md:justify-between md:items-start">
-
-                    <div class="flex items-center w-full mb-2.5 transition-all duration-500 md:w-1/2 lg:w-2/5">
-
-                        <div class="block bg-white h-[3px] w-full max-w-full mr-2 transition-all duration-500 overflow-hidden md:max-w-0 md:mr-0"></div>
-
-                        <h3 class="w-full max-w-fit whitespace-nowrap text-[clamp(2rem,8.14vw,2rem)]/[100%] lg:text-[clamp(2rem,3.13vw,3rem)]">rapid7</h3>
-
+                <template x-for="(item, idx) in items" :key="idx">
+                    <div class="mb-12.5 last:mb-0 md:flex md:justify-between md:items-start"
+                        x-data="{
+                            expanded: false,
+                            needsClamp: false,
+                            collapsedHeight: null,
+                            fullHeight: null,
+                            updateHeights() {
+                                const p = this.$el.querySelector('p');
+                                if (!p) return;
+                                const lineHeight = parseFloat(getComputedStyle(p).lineHeight);
+                                const lines = Math.round(p.scrollHeight / lineHeight);
+                                this.needsClamp = lines > 7;
+                                if (this.needsClamp) {
+                                    this.collapsedHeight = lineHeight * 8 + 'px';
+                                    this.fullHeight = p.scrollHeight + 'px';
+                                } else {
+                                    this.collapsedHeight = this.fullHeight = 'auto';
+                                }
+                            },
+                            observeText() {
+                                const p = this.$el.querySelector('p');
+                                if (!p) return;
+                                const observer = new MutationObserver(() => {
+                                    this.updateHeights();
+                                });
+                                observer.observe(p, { childList: true, subtree: true, characterData: true });
+                            }
+                        }"
+                        x-init="updateHeights(); observeText();"
+                        @resize.window="updateHeights()"
+                    >
+                        <div class="w-full transition-all duration-500 md:pr-5 md:w-1/2 lg:w-2/5">
+                            <div class="flex items-center mb-2.5">
+                                <div class="block bg-white h-[3px] w-full max-w-full mr-2 transition-all duration-500 overflow-hidden md:max-w-0 md:mr-0"></div>
+                                <h3 class="w-full lowercase max-w-fit whitespace-nowrap text-[clamp(2rem,8.14vw,2rem)]/[100%] lg:text-[clamp(2rem,3.13vw,3rem)]" x-text="item.title"></h3>
+                            </div>
+                            <h4 x-text="item.position" class="hidden font-bold opacity-70 -tracking-[0.5px] font-grotesk text-[clamp(1.25rem,5.09vw,1.875rem)]/[120%] md:block"></h4>
+                        </div>
+                        <div class="relative md:w-1/2 lg:w-3/5">
+                            <div
+                                class="transition-all duration-500 overflow-hidden"
+                                :style="needsClamp ? 'height: ' + (expanded ? fullHeight : collapsedHeight) : 'height: auto'"
+                            >
+                                <h4 x-text="item.position" class="font-bold opacity-70 -tracking-[0.5px] font-grotesk text-[clamp(1.25rem,5.09vw,1.875rem)]/[120%] md:hidden"></h4>
+                                <p
+                                    class="-tracking-[0.5px] font-grotesk text-[clamp(1.25rem,5.09vw,1.875rem)]/[120%]"
+                                    :class="needsClamp && !expanded ? 'line-clamp-8' : ''"
+                                    x-text="item.text"
+                                ></p>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-t from-black to-transparent pointer-events-none" x-show="needsClamp && !expanded"></div>
+                            <template x-if="needsClamp">
+                                <button
+                                    class="cursor-pointer -tracking-[0.5px] font-grotesk text-[clamp(1.25rem,5.09vw,1.875rem)]/[120%] z-1 relative"
+                                    @click.stop="
+                                        $nextTick(() => {
+                                            updateHeights();
+                                            expanded = !expanded;
+                                            $nextTick(() => updateHeights());
+                                        });
+                                    "
+                                    x-text="expanded ? '-' : '+'"
+                                ></button>
+                            </template>
+                        </div>
                     </div>
-
-                    <p class="-tracking-[0.5px] font-grotesk text-[clamp(1.25rem,5.09vw,1.875rem)]/[120%] md:w-1/2 lg:w-3/5 lg:text-[clamp(1.875rem,2.93vw,2rem)]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-                </div>
-
-                <div class="mb-12.5 last:mb-0 md:flex md:justify-between md:items-start">
-
-                    <div class="flex items-center w-full mb-2.5 transition-all duration-500 md:w-1/2 lg:w-2/5">
-
-                        <div class="block bg-white h-[3px] w-full max-w-full mr-2 transition-all duration-500 overflow-hidden md:max-w-0 md:mr-0"></div>
-
-                        <h3 class="w-full max-w-fit whitespace-nowrap text-[clamp(2rem,8.14vw,2rem)]/[100%] lg:text-[clamp(2rem,3.13vw,3rem)]">cloudsmith</h3>
-
-                    </div>
-
-                    <p class="-tracking-[0.5px] font-grotesk text-[clamp(1.25rem,5.09vw,1.875rem)]/[120%] md:w-1/2 lg:w-3/5 lg:text-[clamp(1.875rem,2.93vw,2rem)]">I started in cloudsmith right out of university as a graduate engineer, during that time I was primarily working on our main platform, using Python, Django and DRF to add to our existing API functionality. I have also worked in the frontend of the app, which has been migrating from Jinja templating to React with TS. Along with this I was able to gain experience using AWS services such as ECS, Lambda, IAM, Aurora. I have also had opportunities to work outside of the main platform with our opensource projects, I was able to pick up Go to work on our Terraform provider along with Click for our python CLI.</p>
-
-                </div>
-
-                <div class="mb-12.5 last:mb-0 md:flex md:justify-between md:items-start">
-
-                    <div class="flex items-center w-full mb-2.5 transition-all duration-500 md:w-1/2 lg:w-2/5">
-
-                        <div class="block bg-white h-[3px] w-full max-w-full mr-2 transition-all duration-500 overflow-hidden md:max-w-0 md:mr-0"></div>
-
-                        <h3 class="w-full max-w-fit whitespace-nowrap text-[clamp(2rem,8.14vw,2rem)]/[100%] lg:text-[clamp(2rem,3.13vw,3rem)]">pwc</h3>
-
-                    </div>
-
-                    <p class="-tracking-[0.5px] font-grotesk text-[clamp(1.25rem,5.09vw,1.875rem)]/[120%] md:w-1/2 lg:w-3/5 lg:text-[clamp(1.875rem,2.93vw,2rem)]">Year long placement with PwC Belfast. Gaining experience in Python using Django, Django-rest, Flask and data libraries. JavaScript creating webcomponents using Stencil.js, Microservices with Express.js and React.</p>
-
-                </div>
+                </template>
 
             </div>
 
@@ -150,31 +186,43 @@
 
         <section id="blog" class="blog min-h-[calc(100vh-196px)] pb-[185px] px-7.5 transition-all duration-500 lg:mt-[138px] lg:px-12.5">
 
-            <div class="wrap">
+            <div
+                class="wrap"
+                x-data="{
+                        items: [],
+                        async init() {
+                            const res = await fetch('https://dev.to/api/articles?username=leeoc');
+                            this.items = await res.json();
+                        },
+                        formatDate(dateStr) {
+                            const date = new Date(dateStr);
+                            return date.toLocaleDateString('en-GB');
+                        }
+                    }"
+            >
 
                 <div class="grid gap-y-12.5 md:grid-cols-2 md:gap-x-7.5 lg:grid-cols-3 lg:gap-x-12.5">
-
+                    
+                    <template x-for="(item, idx) in items" :key="idx">
                     <div>
 
-                        <a href="https://dev.to/leeoc/web-components-with-vanilla-javascript-egk">
+                        <a :href="item.canonical_url">
 
-                            <div class="image mb-2.5">
+                            <div class="image relative h-0 overflow-hidden pb-[100%] mb-2.5">
 
-                                <picture>
+                                <figure>
 
-                                    <source srcset="./assets/images/article-placeholder.svg" media="(min-width: 1024px)">
-                                    <source srcset="./assets/images/article-placeholder.svg" media="(min-width: 768px)">
-                                    <img src="./assets/images/article-placeholder.svg" alt="Article placeholder" class="block w-full h-auto">
+                                    <img :src="item.cover_image || './assets/images/article-placeholder.svg'" alt="Article placeholder" class="block w-full h-full absolute top-0 left-0 object-cover">
 
-                                </picture>
+                                </figure>
     
                             </div>
     
                             <div class="content">
     
-                                <h2 class="font-grotesk -tracking-[0.5px] text-[clamp(2rem,8.14vw,2rem)]/[100%] line-clamp-2 mb-0.5 lg:text-[clamp(2rem,3.13vw,2.5rem)]">web components with vanilla javascript</h2>
+                                <h2 class="font-grotesk lowercase -tracking-[0.5px] text-[clamp(2rem,8.14vw,2rem)]/[100%] line-clamp-2 mb-0.5 lg:text-[clamp(2rem,3.13vw,2.5rem)]" x-text="item.title"></h2>
     
-                                <time datetime="04.06.21" class="block font-grotesk text-[clamp(1.5rem,6.11vw,1.5rem)] lg:text-[clamp(1.5rem,2.34vw,2rem)]">04.06.21</time>
+                                <time :datetime="item.created_at" class="block font-grotesk text-[clamp(1.5rem,6.11vw,1.5rem)] lg:text-[clamp(1.5rem,2.34vw,2rem)]"  x-text="formatDate(item.created_at)"></time>
     
                             </div>
 
@@ -182,34 +230,8 @@
 
                     </div>
 
-                    <div>
-
-                        <a href="https://dev.to/leeoc/custom-cloudwatch-metrics-using-the-cdk-337f">
-
-                            <div class="image mb-2.5">
-
-                                <picture>
-    
-                                    <source srcset="./assets/images/article-placeholder.svg" media="(min-width: 1024px)">
-                                    <source srcset="./assets/images/article-placeholder.svg" media="(min-width: 768px)">
-                                    <img src="./assets/images/article-placeholder.svg" alt="Article placeholder" class="block w-full h-auto">
-
-                                </picture>
-    
-                            </div>
-    
-                            <div class="content">
-    
-                                <h2 class="font-grotesk -tracking-[0.5px] text-[clamp(2rem,8.14vw,2rem)]/[100%] line-clamp-2 mb-0.5 lg:text-[clamp(2rem,3.13vw,2.5rem)]">custom cloudwatch metrics using the cdk</h2>
-    
-                                <time datetime="08.10.20" class="block font-grotesk text-[clamp(1.5rem,6.11vw,1.5rem)] lg:text-[clamp(1.5rem,2.34vw,2rem)]">08.10.20</time>
-    
-                            </div>
-
-                        </a>
-
-                    </div>
-
+                    </template>
+                
                 </div>
 
             </div>
@@ -222,7 +244,7 @@
 
                 <div class="flex items-center justify-between h-full">
 
-                    <a href="#" class="block text-[clamp(1.5rem,6.11vw,1.5rem)] lg:text-[clamp(1.5rem,2.34vw,2rem)]">contact</a>
+                    <a href="mailto:info@leeoconnell.co.uk?subject=Getting in touch about leeoconnell.co.uk" class="block text-[clamp(1.5rem,6.11vw,1.5rem)] lg:text-[clamp(1.5rem,2.34vw,2rem)]">contact</a>
 
                     <a href="https://github.com/leeoc" class="group"><figure class="transition-all duration-500 group-hover:scale-[1.1]"><img src="./assets/images/icons/github.svg" class="block w-auto h-7" alt="Github"></figure></a>
 
