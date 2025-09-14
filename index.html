@@ -11,7 +11,7 @@
 
 </head>
 
-<body class="bg-black pt-24.5" x-data="{ openMenu : false }">
+<body x-cloak class="bg-black pt-24.5" x-data="{ openMenu : false }">
 
     <div class="sitewrap">
 
@@ -47,7 +47,7 @@
 
         </header>
 
-        <menu class="overflow-hidden transition-all duration-500 px-7.5 -mt-[25px] relative z-[9] lg:-mt-[7px] lg:max-w-[197px] lg:ml-auto lg:pl-0 lg:pr-12.5 lg:box-content" :class="openMenu ? 'max-h-[204px]' : 'max-h-0'">
+        <menu class="overflow-hidden transition-all duration-500 px-7.5 -mt-[25px] z-[9] absolute right-0 w-full lg:-mt-[7px] lg:max-w-[197px] lg:ml-auto lg:pl-0 lg:pr-12.5 lg:box-content" :class="openMenu ? 'max-h-[204px]' : 'max-h-0'">
 
             <ul>
 
@@ -57,13 +57,11 @@
 
                 <li class="text-[clamp(2rem,8.14vw,2rem)] text-right mb-1 lg:text-left"><a href="#blog">blog</a></li>
 
-                <li class="text-[clamp(2rem,8.14vw,2rem)] text-right mb-1 lg:text-left"><a href="#">contact</a></li>
-
             </ul>
 
         </menu>
 
-        <section class="hero h-[calc(100vh-196px)] px-7.5 transition-all duration-500 md:h-[calc(100vh-98px)] lg:px-12.5" :class="{ '-mt-32.5 md:-mt-40' : openMenu }">
+        <section class="hero h-[calc(100vh-196px)] px-7.5 transition-all duration-500 md:h-[calc(100vh-98px)] lg:px-12.5">
 
             <div class="wrap h-full">
 
