@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap');
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'Overused Grotesk';
+    src: url('./fonts/OverusedGrotesk/OverusedGrotesk-Regular.woff2') format('woff2'),
+        url('./fonts/OverusedGrotesk/OverusedGrotesk-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@theme {
+    /* colours */
+    --color-black: rgba(23, 23, 23, 1);
+    --color-white: rgba(248, 244, 236, 1);
+
+    /* fonts */
+    --font-grotesk: 'Overused Grotesk';
+    --font-syne: 'Syne';
+}
+
+body, html, * {
+    scroll-behavior: smooth;
+    scroll-padding-top: 30px;
+}
+
+body {
+    color: var(--color-white);
+    font-size: 1rem;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Syne', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.fadeIn {
+    display: block;
+    position: relative;
+    max-width: 0px;
+    overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+
+    body, html, * {
+        scroll-padding-top: 50px;
+    }
+
+    .fadeIn {
+        max-width: 100%;
+    }
+}

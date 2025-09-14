@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>Lee O'Connell</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="assets/site.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-black pt-24.5" x-data="{ openMenu : false }">
+
+    <div class="sitewrap">
+
+        <header role="banner" class="absolute top-0 left-0 w-full h-24.5 px-7.5 transition-all duration-500 lg:px-12.5 lg:h-34.5">
+
+            <div class="wrap h-full">
+
+                <div class="flex items-center justify-between h-full">
+
+                    <h1>
+                        
+                        <span class="text-white text-[clamp(2rem,8.14vw,2rem)] flex [&_span]:transition-all [&_span]:duration-500">l<span class="fadeIn">ee</span><span class="fadeIn opacity-0">-</span>o<span class="fadeIn">'</span>c<span class="fadeIn">onnell</span>
+                    
+                    </h1>
+
+                    <button type="button" aria-label="Open menu" @click="openMenu = ! openMenu" class="flex items-center cursor-pointer">
+
+                        <p class="text-[clamp(2rem,8.14vw,2rem)] mr-4.5 relative before:content-[''] before:block before:w-full before:max-w-full before:h-full before:bg-black before:absolute before:top-0 before:right-0 before:transition-all before:duration-300 md:before:max-w-0">menu</p>
+
+                        <div class="relative w-7.5 h-7.5 transition-all duration-500 hover:rotate-45 before:content-[''] before:block before:w-[calc(100%+20px)] before:h-[calc(100%+20px)] before:absolute before:left-1/2 before:top-1/2 before:-translate-y-1/2 before:-translate-x-1/2 lg:hover:rotate-0" :class="{ 'rotate-45 md:rotate-0' : openMenu }">
+
+                            <span class="block bg-white w-7.5 h-[5px] absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"></span>
+    
+                            <span class="block bg-white w-7.5 h-[5px] absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 rotate-90 transition-all duration-500 md:rotate-0"></span>
+    
+                        </div>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <menu class="overflow-hidden transition-all duration-500 px-7.5 -mt-[25px] relative z-[9] lg:-mt-[7px] lg:max-w-[197px] lg:ml-auto lg:pl-0 lg:pr-12.5 lg:box-content" :class="openMenu ? 'max-h-[204px]' : 'max-h-0'">
+
+            <ul>
+
+                <li class="text-[clamp(2rem,8.14vw,2rem)] text-right mb-1 lg:text-left"><a href="#work">work</a></li>
+
+                <li class="text-[clamp(2rem,8.14vw,2rem)] text-right mb-1 lg:text-left"><a href="#stack">stack</a></li>
+
+                <li class="text-[clamp(2rem,8.14vw,2rem)] text-right mb-1 lg:text-left"><a href="#blog">blog</a></li>
+
+                <li class="text-[clamp(2rem,8.14vw,2rem)] text-right mb-1 lg:text-left"><a href="#">contact</a></li>
+
+            </ul>
+
+        </menu>
+
+        <section class="hero h-[calc(100vh-196px)] px-7.5 transition-all duration-500 md:h-[calc(100vh-98px)] lg:px-12.5" :class="{ '-mt-32.5 md:-mt-40' : openMenu }">
+
+            <div class="wrap h-full">
+
+                <div class="flex flex-wrap content-center justify-center h-full">
+
+                    <h2 class="w-full text-[clamp(2.1825rem,11.45vw,11.25rem)]/[1.2] max-w-fit">software engineer</h2>
+
+                    <div class="flex items-center justify-between w-full">
+
+                        <div class="block bg-white h-[3px] w-full mr-2"></div>
+
+                        <h3 class="w-full max-w-fit text-[clamp(1.25rem,5.09vw,3rem)]/[1.2] whitespace-nowrap">based in belfast</h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="work" class="experience min-h-[calc(100vh-196px)] transition-all duration-500 pb-24.5 px-7.5 lg:px-12.5 lg:mt-[138px]">
+
+            <div class="wrap">
+
+                <div class="mb-12.5 last:mb-0 md:flex md:justify-between md:items-start">
+
+                    <div class="flex items-center w-full mb-2.5 transition-all duration-500 md:w-1/2 lg:w-2/5">
+
+                        <div class="block bg-white h-[3px] w-full max-w-full mr-2 transition-all duration-500 overflow-hidden md:max-w-0 md:mr-0"></div>
+
+                        <h3 class="w-full max-w-fit whitespace-nowrap text-[clamp(2rem,8.14vw,2rem)]/[100%] lg:text-[clamp(2rem,3.13vw,3rem)]">rapid7</h3>
+
+                    </div>
+
+                    <p class="-tracking-[0.5px] font-grotesk text-[clamp(1.25rem,5.09vw,1.875rem)]/[120%] md:w-1/2 lg:w-3/5 lg:text-[clamp(1.875rem,2.93vw,2rem)]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                </div>
+
+                <div class="mb-12.5 last:mb-0 md:flex md:justify-between md:items-start">
+
+                    <div class="flex items-center w-full mb-2.5 transition-all duration-500 md:w-1/2 lg:w-2/5">
+
+                        <div class="block bg-white h-[3px] w-full max-w-full mr-2 transition-all duration-500 overflow-hidden md:max-w-0 md:mr-0"></div>
+
+                        <h3 class="w-full max-w-fit whitespace-nowrap text-[clamp(2rem,8.14vw,2rem)]/[100%] lg:text-[clamp(2rem,3.13vw,3rem)]">cloudsmith</h3>
+
+                    </div>
+
+                    <p class="-tracking-[0.5px] font-grotesk text-[clamp(1.25rem,5.09vw,1.875rem)]/[120%] md:w-1/2 lg:w-3/5 lg:text-[clamp(1.875rem,2.93vw,2rem)]">I started in cloudsmith right out of university as a graduate engineer, during that time I was primarily working on our main platform, using Python, Django and DRF to add to our existing API functionality. I have also worked in the frontend of the app, which has been migrating from Jinja templating to React with TS. Along with this I was able to gain experience using AWS services such as ECS, Lambda, IAM, Aurora. I have also had opportunities to work outside of the main platform with our opensource projects, I was able to pick up Go to work on our Terraform provider along with Click for our python CLI.</p>
+
+                </div>
+
+                <div class="mb-12.5 last:mb-0 md:flex md:justify-between md:items-start">
+
+                    <div class="flex items-center w-full mb-2.5 transition-all duration-500 md:w-1/2 lg:w-2/5">
+
+                        <div class="block bg-white h-[3px] w-full max-w-full mr-2 transition-all duration-500 overflow-hidden md:max-w-0 md:mr-0"></div>
+
+                        <h3 class="w-full max-w-fit whitespace-nowrap text-[clamp(2rem,8.14vw,2rem)]/[100%] lg:text-[clamp(2rem,3.13vw,3rem)]">pwc</h3>
+
+                    </div>
+
+                    <p class="-tracking-[0.5px] font-grotesk text-[clamp(1.25rem,5.09vw,1.875rem)]/[120%] md:w-1/2 lg:w-3/5 lg:text-[clamp(1.875rem,2.93vw,2rem)]">Year long placement with PwC Belfast. Gaining experience in Python using Django, Django-rest, Flask and data libraries. JavaScript creating webcomponents using Stencil.js, Microservices with Express.js and React.</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="stack" class="stack px-7.5 pb-49 pt-18.5 transition-all duration-500 lg:px-12.5 lg:pb-0 lg:pt-0 lg:mt-[138px] lg:min-h-[-webkit-fill-available]">
+
+            <div class="wrap flex items-center justify-center lg:h-[-webkit-fill-available]">
+
+                <div class="image w-full">
+
+                    <figure><img src="/assets/images/stack-mobile.svg" class="block w-full h-auto"></figure>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="blog" class="blog min-h-[calc(100vh-196px)] pb-[185px] px-7.5 transition-all duration-500 lg:mt-[138px] lg:px-12.5">
+
+            <div class="wrap">
+
+                <div class="grid gap-y-12.5 md:grid-cols-2 md:gap-x-7.5 lg:grid-cols-3 lg:gap-x-12.5">
+
+                    <div>
+
+                        <a href="https://dev.to/leeoc/web-components-with-vanilla-javascript-egk">
+
+                            <div class="image mb-2.5">
+
+                                <picture>
+    
+                                    <source srcset="/assets/images/article-placeholder.svg" media="(min-width: 1024px)">
+                                    <source srcset="/assets/images/article-placeholder.svg" media="(min-width: 768px)">
+                                    <img src="/assets/images/article-placeholder.svg" alt="Article placeholder" class="block w-full h-auto">
+                                
+                                </picture>
+    
+                            </div>
+    
+                            <div class="content">
+    
+                                <h2 class="font-grotesk -tracking-[0.5px] text-[clamp(2rem,8.14vw,2rem)]/[100%] line-clamp-2 mb-0.5 lg:text-[clamp(2rem,3.13vw,2.5rem)]">web components with vanilla javascript</h2>
+    
+                                <time datetime="04.06.21" class="block font-grotesk text-[clamp(1.5rem,6.11vw,1.5rem)] lg:text-[clamp(1.5rem,2.34vw,2rem)]">04.06.21</time>
+    
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                    <div>
+
+                        <a href="https://dev.to/leeoc/custom-cloudwatch-metrics-using-the-cdk-337f">
+
+                            <div class="image mb-2.5">
+
+                                <picture>
+    
+                                    <source srcset="/assets/images/article-placeholder.svg" media="(min-width: 1024px)">
+                                    <source srcset="/assets/images/article-placeholder.svg" media="(min-width: 768px)">
+                                    <img src="/assets/images/article-placeholder.svg" alt="Article placeholder" class="block w-full h-auto">
+                                
+                                </picture>
+    
+                            </div>
+    
+                            <div class="content">
+    
+                                <h2 class="font-grotesk -tracking-[0.5px] text-[clamp(2rem,8.14vw,2rem)]/[100%] line-clamp-2 mb-0.5 lg:text-[clamp(2rem,3.13vw,2.5rem)]">custom cloudwatch metrics using the cdk</h2>
+    
+                                <time datetime="08.10.20" class="block font-grotesk text-[clamp(1.5rem,6.11vw,1.5rem)] lg:text-[clamp(1.5rem,2.34vw,2rem)]">08.10.20</time>
+    
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+            
+        </section>
+
+        <footer class="bg-black fixed bottom-0 left-0 w-full h-24.5 px-7.5 z-[1] transition-all duration-500 lg:h-20.5 lg:px-12.5">
+
+            <div class="wrap h-full">
+
+                <div class="flex items-center justify-between h-full">
+
+                    <a href="#" class="block text-[clamp(1.5rem,6.11vw,1.5rem)] lg:text-[clamp(1.5rem,2.34vw,2rem)]">contact</a>
+
+                    <a href="https://github.com/leeoc" class="group"><figure class="transition-all duration-500 group-hover:scale-[1.1]"><img src="/assets/images/icons/github.svg" class="block w-auto h-7" alt="Github"></figure></a>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+</body>
+
+</html>
